@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using EFCoreSample.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreSample
@@ -14,6 +15,8 @@ namespace EFCoreSample
 		public DbSet<Aircraft> Aircrafts => Set<Aircraft>();
 
 		public DbSet<Dictionary<string, object>> Airports => Set<Dictionary<string, object>>("Airport");
+
+		public DbSet<AircraftType> AircraftTypes => Set<AircraftType>();
 
 		/// <inheritdoc />
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

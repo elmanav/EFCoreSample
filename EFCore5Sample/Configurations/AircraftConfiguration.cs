@@ -11,6 +11,7 @@ namespace EFCoreSample.Configurations
 			base.Configure(builder);
 			builder.ToTable("Aircrafts");
 			builder.Property(aircraft => aircraft.Name).HasColumnName("Name");
+			builder.HasIndex(aircraft => aircraft.Name).IsUnique();
 		}
 	}
 }
