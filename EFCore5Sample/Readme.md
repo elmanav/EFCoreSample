@@ -1,0 +1,1 @@
+﻿Sample for new features on EF Core 5.
