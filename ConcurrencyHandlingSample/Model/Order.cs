@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using ConcurrencyHandlingSample.Model.Events;
 
 namespace ConcurrencyHandlingSample.Model
 {
-	public class Order
+	public class Order : AggregateRoot
 	{
+		public const int MaxOrderItemCount = 5;
 		private List<OrderItem> _items;
 
 		private DateTime? _modifyDate;
@@ -17,12 +19,13 @@ namespace ConcurrencyHandlingSample.Model
 
 		public Guid Id { get; }
 
-		public void AddOrderLine(string productCode)
+		public void AddOrderItem(string productCode)
 		{
-			if (_items.Count >= 5) throw new Exception("Order cannot have more than 5 order items.");
+			if (_items.Count >= MaxOrderItemCount) throw new InvalidOperationException("Order cannot have more than 5 order items.");
 
 			_items.Add(OrderItem.CreateNew(productCode));
-			_modifyDate = DateTime.Now;
+			_modifyDate = DateTime.UtcNow;
+			AddDomainEvent(new OrderItemAddedDomainEvent(this));
 		}
 	}
 }

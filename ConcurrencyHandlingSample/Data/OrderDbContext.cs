@@ -1,9 +1,6 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using ConcurrencyHandlingSample.Model;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using TestSupport.EfHelpers;
 
 namespace ConcurrencyHandlingSample.Data
 {

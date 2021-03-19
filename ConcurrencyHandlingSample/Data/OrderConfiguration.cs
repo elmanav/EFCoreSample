@@ -21,6 +21,8 @@ namespace ConcurrencyHandlingSample.Data
 				item.Property(orderItem => orderItem.Id).ValueGeneratedNever();
 				item.Property(i => i.ProductCode).HasColumnName("ProductCode");
 			});
+
+			builder.Property("_versionId").HasColumnName("VersionId").IsConcurrencyToken();
 		}
 	}
 }
